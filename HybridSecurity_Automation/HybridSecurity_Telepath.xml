@@ -1,0 +1,18 @@
+<suite name="Hybrid Security Telepath Test Suite">
+  
+  <test name="Dashboard TC1">
+    <classes>
+      <class name="com.hybridsec.telepath.testcases.Dashboard_TC1"> </class>
+    </classes>
+  </test>
+  
+  
+  <test name="Dashboard TC2">
+    <classes>
+      <class name="com.hybridsec.telepath.testcases.Dashboard_TC2"> </class>
+    </classes>
+  </test>
+ 
+ </suite>
+
+<!-- COMMENTS -->
