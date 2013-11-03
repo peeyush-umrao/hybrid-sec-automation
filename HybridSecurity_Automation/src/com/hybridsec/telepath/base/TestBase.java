@@ -13,8 +13,8 @@ import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
-
 import com.hybridsec.telepath.utils.MailService_API;
+import com.hybridsec.telepath.utils.Xls_Reader;
 
 
 public class TestBase {
@@ -24,6 +24,7 @@ public class TestBase {
 	public WebDriver wbDv = null;
 	public static EventFiringWebDriver driver = null;
 	public static boolean loggedIn = false;
+	public static Xls_Reader datatable = null;
 	
 	
 	/**
@@ -45,6 +46,8 @@ public class TestBase {
 			OR = new Properties();
 			fp = new FileInputStream(System.getProperty("user.dir")+"\\src\\com\\hybridsec\\telepath\\config\\OR.properties");
 			OR.load(fp);
+			
+			datatable = new Xls_Reader(System.getProperty("user.dir")+"\\src\\com\\hybridsec\\telepath\\xls\\Controller.xlsx");
 			
 			// checking the type of browser and launching the browser
 			if(config.getProperty("browserType").equalsIgnoreCase("Firefox")){

@@ -1,8 +1,8 @@
 <suite name="Hybrid Security Telepath Test Suite">
   
-  <test name="Dashboard TC1">
+  <test name="Login Scenarios">
     <classes>
-      <class name="com.hybridsec.telepath.testcases.Dashboard_TC1"> </class>
+      <class name="com.hybridsec.telepath.testcases.LoginTestCase"> </class>
     </classes>
   </test>
   

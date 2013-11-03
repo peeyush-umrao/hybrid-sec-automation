@@ -38,6 +38,73 @@ public class TestUtility extends TestBase {
 	
 	
 	
+	/**This method is used to check the Run mode of Test case in the Excel Sheet.
+	 * 
+	 * @param testCase It will compare the testCase name in the Excel Sheet and check its Run mode
+	 * @return True/False (True: If the Run mode is No, False: If the Run mode is Yes) 				
+	 */
+	public static boolean isSkip(String testCase) {
+		
+		boolean flag = true;
+		for(int i=2; i<=datatable.getRowCount("Test Cases"); i++ ){
+			
+			if(datatable.getCellData("Test Cases", "TCID", i).equalsIgnoreCase(testCase)){
+				
+				if(datatable.getCellData("Test Cases", "Runmode", i).equalsIgnoreCase("Y")){
+					
+					flag = false;
+					break;
+					
+				}else{
+					
+					flag = true;
+					break;
+				}	
+			}
+		}
+		
+		return flag;
+	}
+	
+	
+	
+	/**This method is used to getData from the Excel Sheet and store that in the 2D Object Array.
+	 * 
+	 * @param sheetName The name of the Sheet from where data is fetching - Controller.xlsx	
+	 * @return 2D Object array
+	 */
+	public static Object[][] getData(String sheetName) {
+		
+		int rows = datatable.getRowCount(sheetName)-1;
+		
+		if(rows <= 0){
+			
+			Object[][] testData = new Object[1][0];
+			return testData;
+			
+		}
+		
+		rows = datatable.getRowCount(sheetName);
+		
+		int cols = datatable.getColumnCount(sheetName);
+		
+		System.out.println("total rows -- "+ rows);
+		System.out.println("total cols -- "+cols);
+		Object data[][] = new Object[rows-1][cols];
+		
+		for(int rowNum=2; rowNum<=rows; rowNum++){
+			
+			for(int colNum=0; colNum<cols; colNum++){
+				
+				data[rowNum-2][colNum] = datatable.getCellData(sheetName, colNum, rowNum);
+			}
+		}
+		
+		return data;
+	}
+	
+	
+	
 	/**
 	 * This method is used to verify that the element is present/displayed on the screen or not
 	 * @param String xpathKey
